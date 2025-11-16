@@ -63,12 +63,7 @@ export default function Dashboard() {
     );
 
   const user = data.data;
-  const handleLogout = () => {
-    logout();
-    queryClient.invalidateQueries({ queryKey: ["user"] });
-    toast.success("Logged out successfully!");
-    navigate("/login", { replace: true });
-  };
+  // Logout is handled via the header's logout control. No inline button here.
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-100">
@@ -87,14 +82,7 @@ export default function Dashboard() {
         <p className="mb-6 text-gray-600">
           <strong>ID:</strong> {user.id}
         </p>
-        <div className="flex gap-4 justify-center">
-          <button
-            className="px-5 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold transition"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        </div>
+        {/* Logout is available in the top header menu */}
       </div>
     </div>
   );
